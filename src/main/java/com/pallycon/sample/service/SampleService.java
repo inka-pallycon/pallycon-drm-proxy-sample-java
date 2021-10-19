@@ -1,10 +1,10 @@
 package com.pallycon.sample.service;
 
 import com.google.common.io.ByteStreams;
+import com.pallycon.sample.token.policy.common.ResponseFormat;
 import com.pallycon.sample.token.PallyConDrmTokenClient;
 import com.pallycon.sample.token.PallyConDrmTokenPolicy;
 import com.pallycon.sample.token.policy.PlaybackPolicy;
-import com.pallycon.sample.token.policy.common.ResponseFormat;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
@@ -29,6 +29,7 @@ public class SampleService implements Sample{
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static final String RESPONSE_FORMAT_ORIGINAL = "ORIGINAL";
+    private static final String RESPONSE_FORMAT_JSON = "JSON";
     private static final String RESPONSE_FORMAT_CUSTOM = "CUSTOM";
 
     @Autowired
@@ -89,7 +90,7 @@ public class SampleService implements Sample{
         // Add sample data processing
         // ....
         // cid, userId is required
-        String cid = "bigbuckbunny";
+        String cid = "test";
         String userId = "proxySample";
         //-----------------------------
 
@@ -175,7 +176,7 @@ public class SampleService implements Sample{
         String tokenResponseFormat = env.getProperty("pallycon.token.response.format", RESPONSE_FORMAT_ORIGINAL).toUpperCase();
         String responseFormat = env.getProperty("pallycon.response.format", RESPONSE_FORMAT_ORIGINAL).toUpperCase();
 
-        if(RESPONSE_FORMAT_CUSTOM.equals(tokenResponseFormat)){
+        if(RESPONSE_FORMAT_JSON.equals(tokenResponseFormat)){
             JSONObject responseJson = (JSONObject)jsonParser.parse(new String(licenseResponse));
             /*-------------------------------------------------
             //TODO 4. If you want to control ResponseData, do it here.

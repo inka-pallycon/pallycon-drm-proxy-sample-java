@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.pallycon</groupId>
-    <artifactId>proxy-sample</artifactId>
-    <version>1.0.1</version>
-    <name>sample</name>
+    <artifactId>proxy-sample-java</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>drm-token-proxy-sample-java</name>
     <description>PallyCon Token Proxy Sample project for Spring Boot</description>
 
     <properties>
