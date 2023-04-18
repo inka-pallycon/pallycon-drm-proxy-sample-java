@@ -168,7 +168,6 @@ public class SampleService implements Sample{
 
                 if(drmType.equals(DrmType.FAIRPLAY.getDrm())) {
                     hurlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-                    body = ("spc=" + new String(body)).getBytes();
                 }else if (drmType.equals(DrmType.NCG.getDrm())){
                     hurlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
                 }else{
