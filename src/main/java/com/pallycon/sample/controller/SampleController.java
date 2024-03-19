@@ -3,16 +3,16 @@ package com.pallycon.sample.controller;
 import com.pallycon.sample.service.DrmType;
 import com.pallycon.sample.service.dto.RequestDto;
 import com.pallycon.sample.service.Sample;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.MethodNotAllowedException;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Brown on 2019-12-11.
@@ -87,6 +87,17 @@ public class SampleController {
         return ResponseEntity.status(HttpStatus.OK.value()).body(responseData);
     }
 
+    @RequestMapping(value = "/fpsKeyManager", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public ResponseEntity<String> fpsKeyManager() {
+        return ResponseEntity.ok(sampleService.getFPSPublicKey());
+    }
+
+    @RequestMapping(value = "/fpsCert", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public ResponseEntity<String> fpsCertificate(HttpServletResponse response) {
+        return ResponseEntity.ok(sampleService.getFPSCertificate(response));
+    }
 
 }
 
